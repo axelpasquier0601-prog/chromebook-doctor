@@ -1,0 +1,28 @@
+{
+  "manifest_version": 3,
+  "name": "Écran & Son (saturation 0–200 %, égaliseur)",
+  "version": "1.0",
+  "description": "Saturation des pages de 0 à 200 % et optimisation du son des vidéos (égaliseur, basses, volume jusqu'à 200 %).",
+  "permissions": [
+    "storage"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Saturation"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "run_at": "document_start",
+      "all_frames": true
+    }
+  ]
+}

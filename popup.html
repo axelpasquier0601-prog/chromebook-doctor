@@ -1,0 +1,14 @@
+<!doctype html><meta charset="utf-8">
+<style>body{width:300px;font:13px system-ui;padding:12px}.r{display:grid;grid-template-columns:96px 1fr 48px;gap:6px;align-items:center;margin:4px 0}.r input{width:100%}h4{margin:10px 0 4px}small{color:#666}</style>
+<h4>Saturation (écran)</h4>
+<div class="r"><span>Saturation</span><input id="sat" type="range" min="0" max="200" value="100"><span id="satV">100 %</span></div>
+<h4>Optimisation du son</h4>
+<label><input id="sOn" type="checkbox"> Activer</label>
+<div id="bands"></div>
+<div class="r"><span>Basses +</span><input id="bass" type="range" min="0" max="12" value="0"><span id="bassV">0 dB</span></div>
+<div class="r"><span>Volume</span><input id="vol" type="range" min="0" max="200" value="100"><span id="volV">100 %</span></div>
+<label><input id="comp" type="checkbox"> Compresseur</label><br>
+<select id="pre"><option value="">Profil…</option><option>Neutre</option><option>Basses</option><option>Voix claires</option><option>Jeux</option><option>Cinéma</option></select>
+<button id="rst">Tout remettre à zéro</button>
+<p><small>Recharge l’onglet si une vidéo déjà ouverte n’est pas affectée.</small></p>
+<script src="popup.js"></script>
