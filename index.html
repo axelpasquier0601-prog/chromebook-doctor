@@ -1,11 +1,11 @@
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style>
-<meta name="theme-color" content="#10201B">
-<meta name="description" content="Chromebook Doctor : diagnostic, FPS, benchmarks et entretien de ton Chromebook.">
-<link rel="manifest" href="./manifest.webmanifest">
-<link rel="icon" href="./icons/icon.svg" type="image/svg+xml">
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}
+/* Chromebook Doctor functional module controls */
+.select{background:var(--raise);color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:9px 12px;font:inherit;min-width:140px}
+#ramThresholdOut{font-variant-numeric:tabular-nums;color:var(--accent)}
+#ramAutoStatus,#ipStatus{margin-top:10px}
 
-</head><body>
-<title>Chromebook Doctor</title>
+</style></head><body>
+<title>Chromebook Doctor — Gaming MAX</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
 <style>
@@ -165,6 +165,60 @@ ul.gmc li:first-child{border-top:0}
 .dark{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;background:#0b0b0b;padding:8px;border-radius:6px}.dark i{height:36px;border-radius:5px}
 .dark i:nth-child(1){background:#101010}.dark i:nth-child(2){background:#141414}.dark i:nth-child(3){background:#181818}.dark i:nth-child(4){background:#1d1d1d}
 .satbig{display:flex;align-items:baseline;gap:6px}.satbig .num{font-size:64px;font-weight:600;line-height:1}.satbig .out{font:500 18px var(--f-mono);color:var(--muted)}
+
+
+/* Chromebook Doctor — vrais espaces de modules */
+.nav-caption{padding:17px 10px 5px;color:#65717e;font:700 10px var(--f-body);letter-spacing:.14em}
+.tabs a{font-size:13px}
+.module-head{display:flex;justify-content:space-between;align-items:center;gap:18px;padding:2px 0 8px}
+.module-head h2{margin-top:5px;font-size:clamp(24px,3vw,32px)}
+.module-head p{margin-top:7px;max-width:66ch}
+.module-icon{display:grid;place-items:center;width:58px;height:58px;flex:none;border:1px solid #59312f;border-radius:14px;background:#291d20;color:var(--accent);font-size:28px}
+.panel .card h3{font-size:17px;margin-bottom:8px}
+.panel .card .actions{margin-top:14px}
+.panel .card a.btn{display:inline-flex;align-items:center;text-decoration:none}
+@media(max-width:820px){.nav-caption{display:none}.module-head{align-items:flex-start}.module-icon{width:46px;height:46px}}
+
+/* ===== FPSDoctor-inspired app shell: fixed navigation, independent content scroll ===== */
+:root{
+  --bg:#0b0d10; --surface:#12161b; --raise:#191f26; --ink:#edf2f7; --muted:#8c98a6;
+  --line:#29323d; --grid:#222b35; --accent:#e34b43; --on-accent:#fff;
+  --good:#39c982; --warn:#e6ad4b; --bad:#ef625b; color-scheme:dark;
+}
+html,body{width:100%;height:100%;min-height:100%;overflow:hidden}
+body{margin:0;padding:0;background:var(--bg);color:var(--ink)}
+.wrap{width:auto;max-width:none;margin:0 0 0 252px;height:100dvh;min-height:0;overflow-y:auto;overflow-x:hidden;padding:26px clamp(18px,3vw,42px) 54px;gap:22px;scrollbar-gutter:stable}
+.tabs{position:fixed;z-index:50;inset:0 auto 0 0;width:252px;height:100dvh;overflow-y:auto;overflow-x:hidden;display:flex;flex-direction:column;align-items:stretch;gap:5px;padding:22px 14px 24px;background:#101419;border:0;border-right:1px solid #252d36;scrollbar-width:thin}
+.tabs::before{content:"CHROMEBOOK\\A DOCTOR";white-space:pre;display:block;padding:8px 10px 24px 48px;margin:0 0 14px;color:#f4f7fa;font:800 17px/1.15 var(--f-display);letter-spacing:.02em;background: no-repeat 8px 5px/30px 30px url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 44 34'%3E%3Cpath d='M2 18H12L16 6L22 28L27 11L30 18H42' fill='none' stroke='%23e34b43' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");border-bottom:1px solid #252d36}
+.tabs::after{content:"ULTIMATE GAMING  •  MAX";display:block;margin-top:auto;padding:20px 10px 2px;color:#687482;font:700 10px var(--f-body);letter-spacing:.13em}
+.tabs a{display:flex;align-items:center;min-height:43px;flex:none;padding:10px 13px;margin:0;border:0;border-radius:7px;color:#aab4c0;font-size:13px;font-weight:600;white-space:normal;transition:background .15s,color .15s}
+.tabs a:hover{background:#1b222b;color:#fff}
+.tabs a[aria-current="page"]{background:#292126;color:#fff;border:1px solid #59312f;box-shadow:inset 3px 0 0 var(--accent)}
+header{display:flex;flex-direction:column;gap:4px}
+.brand svg{width:38px;height:30px}
+h1{font-size:clamp(27px,3vw,38px)}
+.lede{max-width:70ch}
+.card,.trace-wrap,.stat{border-radius:9px;box-shadow:0 5px 18px #00000018}
+.score{margin-top:14px;padding:20px}
+.panel{gap:14px}
+.panel>h2{font-size:22px}
+.btn{border-radius:7px}
+.btn.primary{box-shadow:0 4px 14px #e34b4326}
+#toast{z-index:80}
+#hud{z-index:90}
+#gmFrame{z-index:85}
+.wrap::-webkit-scrollbar,.tabs::-webkit-scrollbar{width:8px}
+.wrap::-webkit-scrollbar-thumb,.tabs::-webkit-scrollbar-thumb{background:#34404d;border-radius:10px}
+@media(max-width:820px){
+  html,body{height:auto;min-height:100%;overflow:auto}
+  .tabs{position:sticky;top:0;inset:auto;width:100%;height:auto;max-height:none;flex-direction:row;align-items:center;overflow-x:auto;overflow-y:hidden;padding:8px 10px;background:#101419;border-right:0;border-bottom:1px solid #252d36;z-index:50}
+  .tabs::before,.tabs::after{display:none}
+  .tabs a{min-height:38px;padding:8px 12px;white-space:nowrap}
+  .wrap{height:auto;min-height:100dvh;overflow:visible;margin:0;padding:18px 14px 40px;gap:18px}
+  .score{grid-template-columns:1fr}
+}
+@media(max-width:520px){.tabs a{font-size:12px;padding:8px 10px}.card{padding:14px}}
+
 </style>
 
 <div class="wrap">
@@ -175,6 +229,32 @@ ul.gmc li:first-child{border-top:0}
     </div>
     <p class="lede">Mesure ce que ton Chromebook sait vraiment faire, repère ce qui le ralentit, puis suis l'ordonnance.</p>
 
+
+  </header>
+
+  <nav class="tabs" aria-label="Modules Chromebook Doctor">
+    <div class="nav-caption">TABLEAU DE BORD</div>
+    <a id="t-bilan" href="#bilan">◈ &nbsp; Bilan général</a>
+    <div class="nav-caption">MODULES PRINCIPAUX</div>
+    <a id="t-ram" href="#ram">▤ &nbsp; RAM</a>
+    <a id="t-network" href="#network">⌁ &nbsp; Network</a>
+    <a id="t-gaming" href="#gaming">▣ &nbsp; Gaming</a>
+    <a id="t-jeux" href="#jeux">↗ &nbsp; Optimisations gaming</a>
+    <a id="t-chrome" href="#chrome">◉ &nbsp; Chrome</a>
+    <a id="t-system" href="#system">⚙ &nbsp; System</a>
+    <div class="nav-caption">OUTILS AVANCÉS</div>
+    <a id="t-fps" href="#fps">FPS Monitor</a>
+    <a id="t-benchmark" href="#benchmark">Benchmark</a>
+    <a id="t-entretien" href="#entretien">Entretien</a>
+    <a id="t-modejeu" href="#modejeu">Mode jeu</a>
+    <a id="t-filtre" href="#filtre">Filtre couleur</a>
+    <a id="t-son" href="#son">Optimisation du son</a>
+    <a id="t-outils" href="#outils">Outils ChromeOS</a>
+  </nav>
+
+  <main>
+    <!-- BILAN -->
+    <section id="p-bilan" class="panel">
     <section class="score card" aria-labelledby="score-h">
       <div class="score-main">
         <h2 id="score-h" class="eyebrow">Score de santé</h2>
@@ -194,25 +274,76 @@ ul.gmc li:first-child{border-top:0}
         <ul id="rx" class="rx"></ul>
       </div>
     </section>
-  </header>
-
-  <nav class="tabs" aria-label="Sections">
-    <a id="t-bilan" href="#bilan">Bilan</a>
-    <a id="t-fps" href="#fps">FPS</a>
-    <a id="t-benchmark" href="#benchmark">Benchmark</a>
-    <a id="t-entretien" href="#entretien">Entretien</a>
-    <a id="t-jeux" href="#jeux">Jeux</a>
-    <a id="t-modejeu" href="#modejeu">Mode jeu</a>
-    <a id="t-filtre" href="#filtre">Filtre couleur</a>
-    <a id="t-outils" href="#outils">Outils</a>
-  </nav>
-
-  <main>
-    <!-- BILAN -->
-    <section id="p-bilan" class="panel">
       <h2>Ce que ton Chromebook annonce</h2>
       <div class="card"><dl id="diag" class="rows"></dl></div>
       <p class="muted small">Ces valeurs viennent du navigateur. Chrome arrondit certaines informations : la mémoire est plafonnée à 8 Go et le quota de stockage concerne cette page, pas ton disque entier.</p>
+    </section>
+
+    <!-- MODULE RAM -->
+    <section id="p-ram" class="panel" hidden>
+      <div class="module-head"><div><span class="eyebrow">MODULE 01 · MÉMOIRE</span><h2>RAM Doctor</h2><p class="muted">Surveillance automatique avec intervalle et seuil personnalisables.</p></div><span class="module-icon">▤</span></div>
+      <div class="stats">
+        <div class="stat"><span id="ramTotal" class="num">--</span><small>RAM installée (estimation)</small></div>
+        <div class="stat"><span id="ramHeap" class="num">--</span><small>Mémoire utilisée par Chromebook Doctor</small></div>
+        <div class="stat"><span id="ramCores" class="num">--</span><small>Cœurs processeur</small></div>
+      </div>
+      <div class="grid">
+        <article class="card">
+          <h3>RAM Cleaner · surveillance automatique</h3>
+          <p class="muted small">Choisis à quelle fréquence vérifier et à partir de quel seuil recevoir une alerte.</p>
+          <div class="opt"><label for="ramInterval"><b>Vérifier toutes les</b></label><select id="ramInterval" class="select"><option value="1">1 minute</option><option value="5" selected>5 minutes</option><option value="10">10 minutes</option><option value="15">15 minutes</option><option value="30">30 minutes</option></select></div>
+          <div class="opt"><label for="ramThreshold"><b>Seuil d'alerte mémoire</b><strong><span id="ramThresholdOut">70</span> %</strong></label><input id="ramThreshold" type="range" min="25" max="90" step="5" value="70" style="width:100%"></div>
+          <div class="actions"><button class="btn primary" id="ramAutoToggle" type="button">Activer la surveillance</button><button class="btn ghost" id="ramRefresh" type="button">Vérifier maintenant</button></div>
+          <p id="ramAutoStatus" class="small muted">Surveillance désactivée.</p>
+        </article>
+        <article class="card"><h3>Libérer de la mémoire</h3><p id="ramAdvice" class="muted small">Analyse des informations disponibles…</p><ul class="tips"><li>Recherche + Échap ouvre le gestionnaire des tâches.</li><li>Ferme les onglets ou extensions qui consomment trop.</li><li>ChromeOS gère automatiquement la mémoire système.</li></ul><button class="btn ghost" data-open="chrome://sys-internals" type="button">Ouvrir le moniteur système</button></article>
+      </div>
+      <p class="muted small">Limite technique : une page web ne peut pas vider la RAM des autres applications ni mesurer précisément toute la RAM système. Le seuil surveille la mémoire JavaScript de cette page lorsque Chrome expose cette mesure ; sinon, le Doctor donne des conseils sans inventer de pourcentage.</p>
+    </section>
+
+    <!-- MODULE NETWORK -->
+    <section id="p-network" class="panel" hidden>
+      <div class="module-head"><div><span class="eyebrow">MODULE 02 · CONNEXION</span><h2>Network Doctor</h2><p class="muted">Diagnostic et raccourcis d'optimisation réseau pour ChromeOS.</p></div><span class="module-icon">⌁</span></div>
+      <div class="stats"><div class="stat"><span id="netStatus" class="num">--</span><small>État Internet</small></div><div class="stat"><span id="netType" class="num">--</span><small>Type de connexion</small></div><div class="stat"><span id="netRtt" class="num">--</span><small>Latence estimée</small></div><div class="stat"><span id="netDown" class="num">--</span><small>Débit estimé</small></div></div>
+      <div class="grid">
+        <article class="card"><h3>NETWORK OPTIMIZER</h3><p id="netAdvice" class="muted small">Récupération des informations réseau…</p><div class="actions"><button id="netRefresh" class="btn primary" type="button">Analyser le réseau</button><button class="btn ghost" data-open="chrome://os-settings/internet" type="button">Ouvrir les paramètres réseau</button></div></article>
+        <article class="card"><h3>Optimisations réseau</h3><div class="opt"><span><b>DNS</b><small>Ouvre les réglages de sécurité Chrome pour consulter le DNS sécurisé.</small></span><button class="btn ghost sm" data-open="chrome://settings/security" type="button">Configurer</button></div><div class="opt"><span><b>Ping / stabilité</b><small>Conseils pour réduire les sources de latence locale.</small></span><button class="btn ghost sm" data-open="chrome://network" type="button">Diagnostic</button></div><div class="opt"><span><b>TCP / réseau système</b><small>Vérifie la connexion dans les paramètres ChromeOS ; une page web ne peut pas modifier les réglages TCP.</small></span><button class="btn ghost sm" data-open="chrome://os-settings/internet" type="button">Voir les réglages</button></div></article>
+      </div>
+      <div class="card"><h3>REFRESH IP</h3><p class="muted small">ChromeOS ne permet pas à une page web de forcer le renouvellement DHCP. Ouvre les paramètres réseau pour déconnecter puis reconnecter le Wi-Fi, ce qui demande une nouvelle configuration au réseau.</p><div class="actions"><button class="btn primary" id="refreshIpBtn" type="button">Refresh IP · ouvrir les réglages</button><button class="btn ghost" data-copy="chrome://os-settings/internet" type="button">Copier l'adresse</button></div><p id="ipStatus" class="small muted" aria-live="polite"></p></div>
+      <p class="muted small">Les réglages DNS, TCP et l'adresse IP sont contrôlés par ChromeOS et le routeur. Chromebook Doctor peut ouvrir les pages utiles et guider les changements, mais ne peut pas les appliquer silencieusement depuis un fichier HTML.</p>
+    </section>
+
+    <!-- MODULE GAMING -->
+    <section id="p-gaming" class="panel" hidden>
+      <div class="module-head"><div><span class="eyebrow">MODULE 03 · PERFORMANCES</span><h2>Gaming Doctor</h2><p class="muted">Prépare ton Chromebook, mesure les FPS et règle les options utiles avant de jouer.</p></div><span class="module-icon">▣</span></div>
+      <div class="grid">
+        <article class="card"><h3>FPS Monitor</h3><p class="muted small">Mesure la fluidité et repère les chutes de FPS.</p><a class="btn primary" href="#fps">Ouvrir FPS Monitor</a></article>
+        <article class="card"><h3>Mode jeu</h3><p class="muted small">Plein écran, maintien de l'écran allumé et HUD de performances lorsque le navigateur le permet.</p><a class="btn primary" href="#modejeu">Configurer le mode jeu</a></article>
+        <article class="card"><h3>Optimisations gaming</h3><p class="muted small">Conseils adaptés aux limites de ChromeOS et aux jeux dans le navigateur.</p><a class="btn ghost" href="#jeux">Voir les optimisations</a></article>
+        <article class="card"><h3>Filtre couleur</h3><p class="muted small">Ajuste la saturation dans le Doctor et les jeux ouverts dans son lecteur intégré.</p><a class="btn ghost" href="#filtre">Régler le filtre</a></article>
+      </div>
+      <div class="card"><h3>GAME BOOST · profil Gaming MAX</h3><div class="row"><dt>Profil par défaut</dt><dd><span class="pill good">GAMING MAX</span></dd></div><p class="muted small">Le mode jeu active les fonctions autorisées du navigateur (plein écran, écran éveillé, HUD et pause des mesures). Les réglages système s'ouvrent ci-dessous pour être ajustés dans ChromeOS.</p><div class="actions"><button class="btn primary" id="gameBoostBtn" type="button">Lancer le Game Boost</button><button class="btn ghost" data-open="chrome://settings/performance" type="button">Réglages performances Chrome</button><button class="btn ghost" data-open="chrome://gpu" type="button">Vérifier le GPU</button><button class="btn ghost" data-open="chrome://os-settings/accessibility" type="button">Animations ChromeOS</button></div><p class="small muted">Le navigateur ne peut pas changer la fréquence CPU/GPU, les pilotes ou les paramètres protégés du système. Évite les flags expérimentaux : ils peuvent rendre Chrome instable.</p></div>
+    </section>
+
+    <!-- MODULE CHROME -->
+    <section id="p-chrome" class="panel" hidden>
+      <div class="module-head"><div><span class="eyebrow">MODULE 04 · NAVIGATEUR</span><h2>Chrome Doctor</h2><p class="muted">Outils pour alléger Chrome, contrôler les extensions et vérifier l'accélération graphique.</p></div><span class="module-icon">◉</span></div>
+      <div class="grid">
+        <article class="card"><h3>Gestion des extensions</h3><p class="muted small">Désactive les extensions que tu n'utilises pas : certaines tournent en arrière-plan.</p><button class="btn primary" data-copy="chrome://extensions" type="button">Copier chrome://extensions</button></article>
+        <article class="card"><h3>Accélération matérielle</h3><p class="muted small">Vérifie si Chrome utilise bien le GPU au lieu du rendu logiciel.</p><button class="btn ghost" data-copy="chrome://gpu" type="button">Copier chrome://gpu</button></article>
+        <article class="card"><h3>Économiseur de mémoire</h3><p class="muted small">Consulte les options de performance de Chrome pour mettre en veille les onglets inactifs.</p><button class="btn ghost" data-copy="chrome://settings/performance" type="button">Copier les réglages</button></article>
+        <article class="card"><h3>Centre d'outils</h3><p class="muted small">Retrouve les pages de diagnostic et les raccourcis utiles.</p><a class="btn ghost" href="#outils">Ouvrir les outils ChromeOS</a></article>
+      </div>
+    </section>
+
+    <!-- MODULE SYSTEM -->
+    <section id="p-system" class="panel" hidden>
+      <div class="module-head"><div><span class="eyebrow">MODULE 05 · CHROMEOS</span><h2>System Doctor</h2><p class="muted">État général de l'appareil, stockage, mises à jour et entretien.</p></div><span class="module-icon">⚙</span></div>
+      <div class="card"><dl id="systemDiag" class="rows"></dl></div>
+      <div class="grid">
+        <article class="card"><h3>Entretien du système</h3><p class="muted small">Checklist de maintenance, mises à jour et nettoyage manuel guidé.</p><a class="btn primary" href="#entretien">Ouvrir la checklist</a></article>
+        <article class="card"><h3>Stockage et mises à jour</h3><p class="muted small">Vérifie l'espace disque réel et les mises à jour de ChromeOS dans les paramètres système.</p><div class="actions"><button class="btn ghost" data-copy="chrome://os-settings/storage" type="button">Copier stockage</button><button class="btn ghost" data-copy="chrome://os-settings/help" type="button">Copier mises à jour</button></div></article>
+      </div>
     </section>
 
     <!-- FPS -->
@@ -377,10 +508,10 @@ ul.gmc li:first-child{border-top:0}
       <div class="grid">
         <div class="card" style="display:flex;flex-direction:column;gap:14px">
           <div class="eyebrow">Saturation</div>
-          <div class="satbig"><span id="flVal" class="num">50</span><span class="out">%</span></div>
-          <input id="flSat" type="range" min="0" max="100" step="1" style="width:100%" aria-label="Saturation">
-          <div class="muted small" style="display:flex;justify-content:space-between"><span>Terne</span><span>Normal (50 %)</span><span>Vif</span></div>
-          <div class="opt" style="border:0;padding:0"><label><input type="checkbox" id="flOn"><span><b>Filtre actif</b><small>Applique la saturation à tout le site et au jeu ouvert depuis le Mode jeu.</small></span></label></div>
+          <div class="satbig"><span id="flVal" class="num">100</span><span class="out">%</span></div>
+          <input id="flSat" type="range" min="0" max="200" step="1" style="width:100%" aria-label="Saturation">
+          <div class="muted small" style="display:flex;justify-content:space-between"><span>0 % · Gris</span><span>Normal (100 %)</span><span>200 % · Très vif</span></div>
+          <div class="opt" style="border:0;padding:0"><label><input type="checkbox" id="flOn"><span><b>Filtre actif</b><small>Applique la saturation à cette page et à son lecteur de jeu intégré uniquement.</small></span></label></div>
           <div><button id="flReset" class="btn ghost sm" type="button">Revenir aux couleurs d’origine</button></div>
         </div>
         <div id="flScene" class="scene">
@@ -397,11 +528,43 @@ ul.gmc li:first-child{border-top:0}
         <ul id="pfList" class="gmc"></ul>
       </div>
       <div class="card" style="display:flex;flex-direction:column;gap:10px">
-        <h3 style="font-size:16px">Sur un autre onglet ou un autre jeu</h3>
-        <p class="small muted">Une page web ne peut filtrer que ses propres pixels. Pour la même saturation sur n’importe quelle page : crée un favori, colle ce code à la place de l’adresse, puis clique dessus dans la page du jeu. Un second clic l’enlève.</p>
-        <code id="flBm" class="a" style="user-select:all"></code>
-        <div class="actions"><button id="flCopyBm" class="btn ghost sm" type="button">Copier le code du favori</button><button class="btn ghost sm" data-copy="chrome://os-settings/display" type="button">Copier l’adresse des réglages d’écran</button></div>
-        <p class="small muted">Pour teinter tout l’écran, y compris hors navigateur, la Veilleuse de ChromeOS se trouve dans ces réglages d’écran.</p>
+        <h3 style="font-size:16px">Filtre GLOBAL · tout l'écran</h3>
+        <p class="small muted">Pour modifier les couleurs de toutes les applications et de tous les sites, utilise le filtre intégré à ChromeOS. Il s'applique au niveau du système, contrairement au curseur de saturation ci-dessus qui ne touche que Chromebook Doctor.</p>
+        <div class="actions"><button class="btn primary" data-open="chrome://os-settings/accessibility" type="button">Ouvrir les filtres d'accessibilité</button><button class="btn ghost" data-open="chrome://os-settings/display" type="button">Ouvrir les réglages d'écran</button></div>
+        <ul class="tips"><li>Paramètres → Accessibilité → Affichage et agrandissement → Correction des couleurs.</li><li>Choisis le filtre disponible (protanopie, deutéranopie, tritanopie ou niveaux de gris) et règle son intensité si l'option apparaît.</li><li>Ce filtre est géré par ChromeOS et agit sur l'affichage global. Il ne propose pas le même réglage libre de saturation que le curseur du Doctor.</li></ul>
+        <code id="flBm" hidden></code><button id="flCopyBm" hidden type="button">Copier</button>
+      </div>
+    </section>
+
+    <!-- OPTIMISATION DU SON -->
+    <section id="p-son" class="panel" hidden>
+      <h2>Optimisation du son</h2>
+      <p class="muted">Égaliseur 5 bandes, renfort des basses, volume jusqu’à 200 %, compresseur et effet large. Charge un fichier audio ou lance un son de test pour régler à l’oreille.</p>
+      <div class="grid">
+        <div class="card" style="display:flex;flex-direction:column;gap:12px">
+          <div class="eyebrow">Profils</div>
+          <div class="actions" id="snPresets"></div>
+          <div class="eyebrow" style="margin-top:6px">Égaliseur</div>
+          <div id="snBands" style="display:flex;flex-direction:column;gap:6px"></div>
+          <div class="fl-row" style="grid-template-columns:120px 1fr 56px"><span>Basses +</span><input id="snBass" type="range" min="0" max="12" step="1" value="0"><span class="num" id="snBassV">0 dB</span></div>
+          <div class="fl-row" style="grid-template-columns:120px 1fr 56px"><span>Volume</span><input id="snVol" type="range" min="0" max="200" step="1" value="100"><span class="num" id="snVolV">100 %</span></div>
+          <div class="opt" style="border:0;padding:0"><label><input type="checkbox" id="snComp"><span><b>Compresseur (son plus fort et régulier)</b><small>Rapproche les sons faibles et forts, utile pour les voix et les pas dans les jeux.</small></span></label></div>
+          <div class="opt" style="border:0;padding:0"><label><input type="checkbox" id="snWide"><span><b>Effet large (stéréo élargie)</b><small>Donne plus d’espace au son, surtout au casque.</small></span></label></div>
+          <div><button id="snReset" class="btn ghost sm" type="button">Tout remettre à zéro</button></div>
+        </div>
+        <div class="card" style="display:flex;flex-direction:column;gap:12px">
+          <div class="eyebrow">Écoute</div>
+          <input id="snFile" type="file" accept="audio/*,video/*">
+          <audio id="snAudio" controls style="width:100%"></audio>
+          <div class="actions"><button id="snTone" class="btn" type="button">Son de test (bruit rose)</button><button id="snStop" class="btn ghost" type="button">Arrêter le test</button></div>
+          <div class="opt" style="border:0;padding:0"><label><input type="checkbox" id="snOn" checked><span><b>Optimisation active</b><small>Décoche pour comparer avec le son d’origine.</small></span></label></div>
+          <canvas id="snSpec" height="110" style="width:100%;background:#0b0b0b;border-radius:8px"></canvas>
+        </div>
+      </div>
+      <div class="card" style="display:flex;flex-direction:column;gap:10px">
+        <h3 style="font-size:16px">Tout le son du Chromebook</h3>
+        <p class="small muted">Cette page ne traite que le son qu’elle lit elle-même. Pour améliorer le son de YouTube, Netflix, etc., installe l’extension fournie (onglet Chrome), qui applique le même égaliseur aux vidéos des sites. Le son des applications Android et du système reste géré par ChromeOS.</p>
+        <div class="actions"><button class="btn ghost" data-open="chrome://os-settings/audio" type="button">Ouvrir les réglages audio</button><button class="btn ghost" data-open="chrome://os-settings/accessibility" type="button">Audio mono / accessibilité</button></div>
       </div>
     </section>
   </main>
@@ -480,6 +643,63 @@ function renderDiag(){
     return '<div class="row"><dt>'+esc(r.k)+'</dt><dd>'+r.h+(r.n?'<span class="note">'+esc(r.n)+'</span>':"")+'</dd></div>';
   }).join("");
 }
+function renderRamModule(){
+  var heap=performance&&performance.memory?performance.memory.usedJSHeapSize:null;
+  $("#ramTotal").textContent=mem?(mem>=8?"8+ Go":mem+" Go"):"Indisponible";
+  $("#ramHeap").textContent=heap?(heap/1048576).toFixed(0)+" Mo":"Non exposée";
+  $("#ramCores").textContent=cores||"--";
+  $("#ramAdvice").textContent=!mem?"Chrome ne communique pas la capacité RAM de cet appareil. Consulte chrome://sys-internals pour observer la mémoire système.":mem<=4?"Mémoire limitée détectée. Garde peu d'onglets ouverts et vérifie les applications les plus gourmandes dans le gestionnaire des tâches.":"Capacité mémoire détectée : "+(mem>=8?"8 Go ou plus.":mem+" Go.")+" Ferme les tâches inutiles si Chrome ralentit.";
+}
+function renderNetworkModule(){
+  var c=conn,online=nav.onLine;
+  $("#netStatus").textContent=online?"Connecté":"Hors ligne";
+  $("#netType").textContent=c&&c.effectiveType?c.effectiveType.toUpperCase():"Inconnu";
+  $("#netRtt").textContent=c&&c.rtt!=null?c.rtt+" ms":"Indisponible";
+  $("#netDown").textContent=c&&c.downlink!=null?c.downlink+" Mb/s":"Indisponible";
+  $("#netAdvice").textContent=!online?"Aucune connexion signalée par le navigateur. Vérifie le Wi-Fi et le routeur.":!c?"Chrome ne fournit pas les mesures de débit et de latence sur cet appareil. La connexion est signalée active.":"Informations estimées par le navigateur, pas un test de débit garanti. Pour mesurer le ping réel, teste depuis le jeu ou un service de test réseau.";
+}
+function renderSystemModule(){
+  $("#systemDiag").innerHTML=diagRows().map(function(r){return '<div class="row"><dt>'+esc(r.k)+'</dt><dd>'+r.h+(r.n?'<span class="note">'+esc(r.n)+'</span>':"")+'</dd></div>'}).join("");
+}
+$("#ramRefresh").addEventListener("click",function(){renderRamModule();toast("Diagnostic RAM actualisé")});
+$("#netRefresh").addEventListener("click",function(){renderNetworkModule();toast("Diagnostic réseau actualisé")});
+
+/* ---------- RAM Cleaner : intervalle + seuil ---------- */
+var ramTimer=null, ramCfg=Object.assign({minutes:5,threshold:70},store("cd-ram-cleaner")||{});
+function ramUsage(){
+  var m=performance&&performance.memory;
+  if(!m||!m.jsHeapSizeLimit||!m.usedJSHeapSize)return null;
+  return Math.round(100*m.usedJSHeapSize/m.jsHeapSizeLimit);
+}
+function ramCheck(showToast){
+  renderRamModule();
+  var pct=ramUsage(),status=$("#ramAutoStatus");
+  if(pct===null){status.textContent="Mesure RAM détaillée non exposée par ce navigateur. Vérification effectuée, mais aucun pourcentage système ne peut être calculé.";return}
+  status.textContent="Dernière vérification : "+pct+" % de la limite mémoire JavaScript de cette page (seuil : "+ramCfg.threshold+" %).";
+  if(pct>=ramCfg.threshold){toast("Seuil mémoire de la page atteint : ferme les onglets inutiles si Chrome ralentit.");status.textContent+=" Conseil : ouvre le gestionnaire des tâches avec Recherche + Échap."}
+  else if(showToast)toast("RAM vérifiée : "+pct+" % de la limite de cette page.");
+}
+function ramStart(){if(ramTimer)clearInterval(ramTimer);ramCfg.minutes=Number($("#ramInterval").value);ramCfg.threshold=Number($("#ramThreshold").value);store("cd-ram-cleaner",ramCfg);ramCheck(false);ramTimer=setInterval(function(){ramCheck(false)},ramCfg.minutes*60000);$("#ramAutoToggle").textContent="Arrêter la surveillance";$("#ramAutoStatus").textContent="Surveillance active : vérification toutes les "+ramCfg.minutes+" min, alerte à "+ramCfg.threshold+" %.";}
+function ramStop(){if(ramTimer)clearInterval(ramTimer);ramTimer=null;$("#ramAutoToggle").textContent="Activer la surveillance";$("#ramAutoStatus").textContent="Surveillance désactivée."}
+$("#ramInterval").value=String(ramCfg.minutes);$("#ramThreshold").value=String(ramCfg.threshold);$("#ramThresholdOut").textContent=ramCfg.threshold;
+$("#ramThreshold").addEventListener("input",function(e){ramCfg.threshold=Number(e.target.value);$("#ramThresholdOut").textContent=ramCfg.threshold;store("cd-ram-cleaner",ramCfg)});
+$("#ramInterval").addEventListener("change",function(){ramCfg.minutes=Number(this.value);store("cd-ram-cleaner",ramCfg);if(ramTimer)ramStart()});
+$("#ramAutoToggle").addEventListener("click",function(){ramTimer?ramStop():ramStart()});
+$("#ramRefresh").addEventListener("click",function(){ramCheck(true)});
+
+/* ---------- Safe OS settings shortcuts ---------- */
+document.addEventListener("click",function(e){
+  var b=e.target.closest&&e.target.closest("[data-open]");
+  if(b){var u=b.getAttribute("data-open");try{window.open(u,"_blank","noopener")}catch(err){toast("Ouvre cette adresse dans un nouvel onglet : "+u)}}
+});
+$("#refreshIpBtn").addEventListener("click",function(){
+  $("#ipStatus").textContent="Dans les paramètres qui s'ouvrent : sélectionne ton Wi-Fi, déconnecte-toi, puis reconnecte-toi. Le renouvellement DHCP est géré par ChromeOS et le routeur.";
+  try{window.open("chrome://os-settings/internet","_blank","noopener")}catch(e){toast("Ouvre chrome://os-settings/internet dans Chrome")}
+});
+$("#gameBoostBtn").addEventListener("click",function(){location.hash="#modejeu";if(!gmOn)gmStart()});
+
+window.addEventListener("online",renderNetworkModule);window.addEventListener("offline",renderNetworkModule);
+if(conn&&conn.addEventListener)conn.addEventListener("change",renderNetworkModule);
 if(nav.getBattery){nav.getBattery().then(function(b){INFO.battery=b;renderDiag();b.addEventListener&&b.addEventListener("chargingchange",renderDiag)}).catch(function(){})}
 if(nav.storage&&nav.storage.estimate){nav.storage.estimate().then(function(e){
   if(e&&e.quota){INFO.storage=(e.quota/1073741824).toFixed(1)+" Go autorisés, "+((e.usage||0)/1048576).toFixed(1)+" Mo utilisés";renderDiag()}
@@ -917,16 +1137,18 @@ if(nav.getBattery)nav.getBattery().then(function(b){b.addEventListener("charging
 gmChecks();
 
 /* ---------- Filtre couleur ---------- */
-var FL=Object.assign({sat:50,on:false,pf:[]},store("cd-fl2")||{});
-function flCss(){return FL.sat==50?"none":"saturate("+FL.sat/50+")"}
+var FL=(function(){var n=store("cd-fl3");if(n)return Object.assign({sat:100,on:false,pf:[]},n);
+  var o=store("cd-fl2");if(o){o.sat=(o.sat||50)*2;(o.pf||[]).forEach(function(p){p.s=p.s*2});return Object.assign({sat:100,on:false,pf:[]},o)}
+  return {sat:100,on:false,pf:[]}})();
+function flCss(){return FL.sat==100?"none":"saturate("+FL.sat/100+")"}
 function flApply(){
   var css=flCss();
   $("#flSat").value=FL.sat;$("#flVal").textContent=FL.sat;
   $("#flScene").style.filter=FL.on?"":css;
   document.documentElement.style.filter=FL.on&&css!=="none"?css:"";
   $("#flOn").checked=FL.on;
-  $("#flBm").textContent="javascript:(function(){var e=document.documentElement;e.style.filter=e.style.filter?'':'saturate("+FL.sat/50+")'})()";
-  store("cd-fl2",FL);
+  $("#flBm").textContent="javascript:(function(){var e=document.documentElement;e.style.filter=e.style.filter?'':'saturate("+FL.sat/100+")'})()";
+  store("cd-fl3",FL);
 }
 function pfRender(){
   $("#pfList").innerHTML=FL.pf.length?FL.pf.map(function(p,i){
@@ -940,45 +1162,130 @@ function flAutoProfile(u){
 }
 $("#flSat").addEventListener("input",function(e){FL.sat=Number(e.target.value);flApply()});
 $("#flOn").addEventListener("change",function(e){FL.on=e.target.checked;flApply()});
-$("#flReset").addEventListener("click",function(){FL.sat=50;FL.on=false;flApply()});
+$("#flReset").addEventListener("click",function(){FL.sat=100;FL.on=false;flApply()});
 $("#flCopyBm").addEventListener("click",function(){copyText($("#flBm").textContent,"Code du favori copié")});
 $("#pfSave").addEventListener("click",function(){
   var n=$("#pfName").value.trim();if(!n){toast("Donne un nom au profil");return}
   FL.pf.push({n:n,s:FL.sat,u:$("#pfUrl").value.trim()});
-  $("#pfName").value="";$("#pfUrl").value="";store("cd-fl2",FL);pfRender();
+  $("#pfName").value="";$("#pfUrl").value="";store("cd-fl3",FL);pfRender();
 });
 $("#pfList").addEventListener("click",function(e){
   var a=e.target.getAttribute("data-ap"),d=e.target.getAttribute("data-dp");
   if(a!=null){FL.sat=FL.pf[a].s;FL.on=true;flApply()}
-  if(d!=null){FL.pf.splice(d,1);store("cd-fl2",FL);pfRender()}
+  if(d!=null){FL.pf.splice(d,1);store("cd-fl3",FL);pfRender()}
 });
 flApply();pfRender();
 
+/* ---------- Optimisation du son ---------- */
+var SN=Object.assign({on:true,g:[0,0,0,0,0],bass:0,vol:100,comp:false,wide:false},store("cd-sn")||{});
+var SNF=[60,250,1000,4000,12000],SNL=["60 Hz · grave","250 Hz · chaleur","1 kHz · voix","4 kHz · précision","12 kHz · aigus"];
+var SNP={"Neutre":{g:[0,0,0,0,0],bass:0,comp:false,wide:false},"Basses":{g:[5,3,0,0,1],bass:6,comp:false,wide:false},"Voix claires":{g:[-3,-1,3,3,1],bass:0,comp:true,wide:false},"Jeux (pas, détails)":{g:[-2,-2,1,6,4],bass:0,comp:true,wide:true},"Cinéma":{g:[4,1,0,2,3],bass:4,comp:true,wide:true},"Petits haut-parleurs":{g:[-4,3,3,2,2],bass:0,comp:true,wide:false}};
+var snCtx=null,snN={},snSrc=null,snToneSrc=null,snAn=null;
+function snBuild(){
+  if(snCtx)return;
+  snCtx=new(window.AudioContext||window.webkitAudioContext)();
+  snN.pre=snCtx.createGain();
+  snN.bass=snCtx.createBiquadFilter();snN.bass.type="lowshelf";snN.bass.frequency.value=100;
+  snN.eq=SNF.map(function(f,i){var b=snCtx.createBiquadFilter();b.type=i==0?"lowshelf":i==4?"highshelf":"peaking";b.frequency.value=f;b.Q.value=1;return b});
+  snN.comp=snCtx.createDynamicsCompressor();
+  snN.out=snCtx.createGain();
+  snAn=snCtx.createAnalyser();snAn.fftSize=256;
+  /* effet large : mélange gauche/droite inversé retardé */
+  snN.split=snCtx.createChannelSplitter(2);snN.merge=snCtx.createChannelMerger(2);
+  snN.dl=snCtx.createDelay(0.05);snN.dr=snCtx.createDelay(0.05);snN.dl.delayTime.value=0.012;snN.dr.delayTime.value=0.012;
+  snN.xl=snCtx.createGain();snN.xr=snCtx.createGain();snN.xl.gain.value=-0.35;snN.xr.gain.value=-0.35;
+  snN.wideIn=snCtx.createGain();snN.wideOut=snCtx.createGain();
+  snN.wideIn.connect(snN.wideOut);
+  snN.wideIn.connect(snN.split);
+  snN.split.connect(snN.dl,0);snN.split.connect(snN.dr,1);
+  snN.dl.connect(snN.xr);snN.dr.connect(snN.xl);
+  snN.xr.connect(snN.merge,0,1);snN.xl.connect(snN.merge,0,0);
+  snN.wideAmt=snCtx.createGain();snN.merge.connect(snN.wideAmt);snN.wideAmt.connect(snN.wideOut);
+  snN.pre.connect(snN.bass);var prev=snN.bass;
+  snN.eq.forEach(function(b){prev.connect(b);prev=b});
+  prev.connect(snN.wideIn);snN.wideOut.connect(snN.comp);snN.comp.connect(snN.out);snN.out.connect(snAn);snAn.connect(snCtx.destination);
+  var el=$("#snAudio");snSrc=snCtx.createMediaElementSource(el);snSrc.connect(snN.pre);
+}
+function snApply(){
+  var on=SN.on;
+  if(snCtx){
+    var t=snCtx.currentTime;
+    snN.bass.gain.setTargetAtTime(on?SN.bass:0,t,.02);
+    snN.eq.forEach(function(b,i){b.gain.setTargetAtTime(on?SN.g[i]:0,t,.02)});
+    snN.pre.gain.setTargetAtTime(1,t,.02);
+    snN.out.gain.setTargetAtTime(SN.vol/100,t,.02);
+    if(on&&SN.comp){snN.comp.threshold.value=-30;snN.comp.ratio.value=6;snN.comp.knee.value=20;snN.comp.attack.value=.005;snN.comp.release.value=.2}
+    else{snN.comp.threshold.value=0;snN.comp.ratio.value=1}
+    snN.wideAmt.gain.setTargetAtTime(on&&SN.wide?1:0,t,.05);
+  }
+  $("#snBass").value=SN.bass;$("#snBassV").textContent=SN.bass+" dB";
+  $("#snVol").value=SN.vol;$("#snVolV").textContent=SN.vol+" %";
+  $("#snComp").checked=SN.comp;$("#snWide").checked=SN.wide;$("#snOn").checked=SN.on;
+  SN.g.forEach(function(v,i){var r=$("#snB"+i);if(r){r.value=v;$("#snBV"+i).textContent=(v>0?"+":"")+v+" dB"}});
+  store("cd-sn",SN);
+}
+$("#snBands").innerHTML=SNF.map(function(f,i){return '<div class="fl-row" style="grid-template-columns:130px 1fr 56px"><span>'+SNL[i]+'</span><input id="snB'+i+'" data-b="'+i+'" type="range" min="-12" max="12" step="1" value="0"><span class="num" id="snBV'+i+'">0 dB</span></div>'}).join("");
+$("#snPresets").innerHTML=Object.keys(SNP).map(function(k){return '<button class="btn ghost sm" data-sp="'+k+'" type="button">'+k+'</button>'}).join(" ");
+$("#snPresets").addEventListener("click",function(e){var k=e.target.getAttribute("data-sp");if(!k)return;var p=SNP[k];SN.g=p.g.slice();SN.bass=p.bass;SN.comp=p.comp;SN.wide=p.wide;snApply();toast("Profil « "+k+" »")});
+$("#snBands").addEventListener("input",function(e){var b=e.target.getAttribute("data-b");if(b==null)return;SN.g[b]=Number(e.target.value);snApply()});
+$("#snBass").addEventListener("input",function(e){SN.bass=Number(e.target.value);snApply()});
+$("#snVol").addEventListener("input",function(e){SN.vol=Number(e.target.value);snApply()});
+$("#snComp").addEventListener("change",function(e){SN.comp=e.target.checked;snApply()});
+$("#snWide").addEventListener("change",function(e){SN.wide=e.target.checked;snApply()});
+$("#snOn").addEventListener("change",function(e){SN.on=e.target.checked;snApply()});
+$("#snReset").addEventListener("click",function(){SN={on:true,g:[0,0,0,0,0],bass:0,vol:100,comp:false,wide:false};snApply()});
+$("#snFile").addEventListener("change",function(e){
+  var f=e.target.files[0];if(!f)return;snBuild();snStopTone();
+  $("#snAudio").src=URL.createObjectURL(f);snCtx.resume();$("#snAudio").play().catch(function(){});snApply();snDraw();
+});
+$("#snAudio").addEventListener("play",function(){snBuild();snCtx.resume();snApply();snDraw()});
+function snStopTone(){if(snToneSrc){try{snToneSrc.stop()}catch(e){}snToneSrc=null}}
+$("#snTone").addEventListener("click",function(){
+  snBuild();snCtx.resume();snStopTone();
+  var n=snCtx.sampleRate*4,buf=snCtx.createBuffer(2,n,snCtx.sampleRate);
+  for(var c=0;c<2;c++){var d=buf.getChannelData(c),b0=0,b1=0,b2=0;for(var i=0;i<n;i++){var w=Math.random()*2-1;b0=.99765*b0+w*.0990460;b1=.96300*b1+w*.2965164;b2=.57000*b2+w*1.0526913;d[i]=(b0+b1+b2+w*.1848)*.12}}
+  snToneSrc=snCtx.createBufferSource();snToneSrc.buffer=buf;snToneSrc.loop=true;
+  var g=snCtx.createGain();g.gain.value=.6;snToneSrc.connect(g);g.connect(snN.pre);snToneSrc.start();snApply();snDraw();
+});
+$("#snStop").addEventListener("click",snStopTone);
+var snRaf=0;
+function snDraw(){
+  cancelAnimationFrame(snRaf);
+  var cv=$("#snSpec");if(!cv||!snAn)return;
+  var w=cv.width=cv.clientWidth*(window.devicePixelRatio||1),h=cv.height=110,x=cv.getContext("2d"),d=new Uint8Array(snAn.frequencyBinCount);
+  (function loop(){
+    if(location.hash!=="#son"){return}
+    snAn.getByteFrequencyData(d);x.clearRect(0,0,w,h);
+    var bw=w/d.length;x.fillStyle="#4db6ac";
+    for(var i=0;i<d.length;i++){var bh=d[i]/255*h;x.fillRect(i*bw,h-bh,bw-1,bh)}
+    snRaf=requestAnimationFrame(loop);
+  })();
+}
+snApply();
+
 /* ---------- Navigation par hash ---------- */
-var TABS=["bilan","fps","benchmark","entretien","jeux","modejeu","filtre","outils"];
+var TABS=["bilan","ram","network","gaming","chrome","system","fps","benchmark","entretien","jeux","modejeu","filtre","son","outils"];
 function route(){
   var h=location.hash.slice(1);if(TABS.indexOf(h)<0)h="bilan";
   TABS.forEach(function(t){
-    $("#p-"+t).hidden=(t!==h);
-    $("#t-"+t).setAttribute("aria-current",t===h?"page":"false");
+    var panel=$("#p-"+t),link=$("#t-"+t);
+    if(panel)panel.hidden=(t!==h);
+    if(link)link.setAttribute("aria-current",t===h?"page":"false");
   });
+  /* Chaque module s'ouvre en haut : la navigation latérale reste indépendante. */
+  var shell=$(".wrap");
+  if(window.matchMedia("(min-width: 821px)").matches){if(shell)shell.scrollTop=0}
+  else{window.scrollTo(0,0)}
   if(h==="fps"){if(!userPaused)startMonitor();sizeCanvases()}else if(running){stopMonitor()}
+  if(h==="ram")renderRamModule();
+  if(h==="network")renderNetworkModule();
+  if(h==="system")renderSystemModule();
+  if(h==="son")snDraw();
 }
 window.addEventListener("hashchange",route);
 
-renderDiag();renderChecklist();renderScore();route();
+renderDiag();renderRamModule();renderNetworkModule();renderSystemModule();renderChecklist();renderScore();route();
 })();
-</script>
-
-
-<script>
-if ("serviceWorker" in navigator) {
-  window.addEventListener("load", function () {
-    navigator.serviceWorker.register("./service-worker.js").catch(function (error) {
-      console.warn("Chromebook Doctor : service worker non enregistré", error);
-    });
-  });
-}
 </script>
 
 </body></html>

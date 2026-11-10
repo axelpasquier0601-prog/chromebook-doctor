@@ -1,0 +1,17 @@
+CHROMEBOOK DOCTOR V2 - PACK POUR GITHUB PAGES
+
+CONTENU
+- index.html : site complet Chromebook Doctor (à publier à la racine du dépôt GitHub Pages).
+- ecran-et-son/ : extension Chrome distincte pour appliquer la saturation aux pages web et régler le son des médias.
+
+MISE A JOUR DU SITE GITHUB PAGES
+1. Décompressez cette archive.
+2. Ouvrez le dépôt GitHub qui héberge votre site.
+3. Dans le dépôt, ouvrez le dossier racine (pas le menu de création de site).
+4. Remplacez l'ancien index.html par ce nouvel index.html : Add file > Upload files, puis glissez le fichier index.html. Si GitHub demande de confirmer le remplacement, confirmez. Sinon, ouvrez l'ancien index.html, cliquez sur le crayon, remplacez son contenu par celui du nouveau fichier, puis Commit changes.
+5. Attendez le déploiement GitHub Pages, puis rechargez le site avec Ctrl+Maj+R.
+
+IMPORTANT
+Le fichier HTML comprend le module Gaming et le filtre couleur 0–200 %. Dans le site, le filtre agit sur l'affichage du site et son lecteur de jeu intégré, pas sur les autres onglets ni sur les applications natives de ChromeOS.
+
+Pour saturer les autres pages web dans Chrome, installez séparément l'extension ecran-et-son : chrome://extensions > activer le mode développeur > Charger l'extension non empaquetée > choisir le dossier ecran-et-son extrait. Une extension ne s'installe pas en la publiant sur GitHub Pages. Elle ne peut pas filtrer les jeux natifs hors navigateur ni l'interface de ChromeOS.
